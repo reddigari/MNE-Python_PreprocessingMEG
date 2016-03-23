@@ -392,8 +392,8 @@ class MnePreproc:
                 blink = load.unpickle(rej_files[0])
                 idx = blink['accept'].x
             elif op.splitext(rej_files[0])[1] == '.txt': # if it's a regular text file, load into pandas DataFrame
-                blink = pandas.DataFrame.from_csv(rej_files[0], sep='\t', index_col=False)
-                idx = blink['accept']
+                blink = pandas.DataFrame.from_csv(rej_files[0], sep='\t', index_col=None)
+                idx = blink['accept'].values
 
             self.epochs_clean = self.epochs[idx]
             self.ds_events['survived_rej'] = idx
